@@ -1,0 +1,46 @@
+#include <iostream>
+#include <random>
+#include <vector>
+
+using namespace std;
+
+struct Particle {
+    double x, y;
+    double vx, vy;
+};
+
+
+int main() {
+    double L = 1.0; // box size
+    double N = 1000; // number of particles
+    int Ngrid = 64;
+    double mass = 10; 
+
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_real_distribution<> particle_initalisation_distribution(0.0, L);
+
+    vector<Particle> particles(N);
+    for (int i = 0; i < N; ++i){
+        particles[i].x = particle_initalisation_distribution(gen);
+        particles[i].y = particle_initalisation_distribution(gen);
+        particles[i].vx = 0;
+        particles[i].vy = 0;
+    }
+
+    double dx = L/Ngrid;
+
+    vector<vector<double> > density(Ngrid, vector<double>(Ngrid, 0.0));
+
+    for (const auto& p : particles){
+        int di = p.x/dx;
+        int dj = p.y/dx;
+        di = di % Ngrid;
+        dj = dj % Ngrid;
+        cout << di << " " << dj << endl;
+        density[di][dj] += mass;
+        cout << p.x << " " << p.y << endl;
+        cout << density[di][dj] << endl;
+    }
+    
+}

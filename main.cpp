@@ -11,10 +11,10 @@ struct Particle {
 
 
 int main() {
-    double L = 1.0; // box size
-    double N = 1000; // number of particles
-    int Ngrid = 64;
-    double mass = 10; 
+    const double L = 1.0; // box size
+    const double N = 1000; // number of particles
+    const int Ngrid = 64;
+    const double mass = 10; 
 
     random_device rd;
     mt19937 gen(rd());
@@ -28,7 +28,7 @@ int main() {
         particles[i].vy = 0;
     }
 
-    double dx = L/Ngrid;
+    const double dx = L/Ngrid;
 
     vector<vector<double> > density(Ngrid, vector<double>(Ngrid, 0.0));
 

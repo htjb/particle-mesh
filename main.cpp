@@ -11,6 +11,9 @@ struct Particle {
 
 
 int main() {
+
+    cout << "Running 2D Particle Mesh Code." << endl;
+    
     const double L = 1.0; // box size
     const double N = 1000; // number of particles
     const int Ngrid = 64;
@@ -28,6 +31,8 @@ int main() {
         particles[i].vy = 0;
     }
 
+    cout << "Initialised Particles." << endl;
+
     const double dx = L/Ngrid;
 
     vector<vector<double> > density(Ngrid, vector<double>(Ngrid, 0.0));
@@ -40,4 +45,6 @@ int main() {
         density[di][dj] += mass;
     }
     
+    cout << "Intialised Density." << endl;
+
 }

@@ -37,10 +37,7 @@ int main() {
         int dj = p.y/dx;
         di = di % Ngrid;
         dj = dj % Ngrid;
-        cout << di << " " << dj << endl;
         density[di][dj] += mass;
-        cout << p.x << " " << p.y << endl;
-        cout << density[di][dj] << endl;
     }
     
 }
